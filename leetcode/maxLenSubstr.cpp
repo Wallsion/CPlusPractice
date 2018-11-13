@@ -1,7 +1,7 @@
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        std::array<int,200> temArray;
+        std::array<int,128> temArray;
         for(auto it = temArray.begin(); it != temArray.end(); ++it)
         {
             *it = 0;
@@ -9,13 +9,7 @@ public:
         int pre = 0;
         int next = 0;
         int max = 0;
-        if(s.length() == 1)
-            return 1;
-        else if(s.length() == 0)
-            return 0;
-        else
-        {
-            while(next != s.length())
+        while(next != s.length())
             {
                 if(temArray[s[next]] < 1)
                     temArray[s[next]] = temArray[s[next]] + 1;
@@ -38,7 +32,6 @@ public:
                 }
                ++next;
             }
-        }
         return max > next - pre ? max : next - pre;
     }
 };
